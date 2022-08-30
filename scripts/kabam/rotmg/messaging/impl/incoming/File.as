@@ -10,16 +10,16 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var file_:String;
       
-      public function File(_arg1:uint, _arg2:Function)
+      public function File(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.filename_ = _arg1.readUTF();
-         var _local2:int = _arg1.readInt();
-         this.file_ = _arg1.readUTFBytes(_local2);
+         this.filename_ = param1.readUTF();
+         var _loc2_:int = param1.readInt();
+         this.file_ = param1.readUTFBytes(_loc2_);
       }
       
       override public function toString() : String

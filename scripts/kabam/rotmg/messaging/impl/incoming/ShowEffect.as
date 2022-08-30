@@ -39,12 +39,6 @@ package kabam.rotmg.messaging.impl.incoming
       public static const FLASH_EFFECT_TYPE:int = 15;
       
       public static const THROW_PROJECTILE_EFFECT_TYPE:int = 16;
-      
-      public static const SHOCKER_EFFECT_TYPE:int = 17;
-      
-      public static const SHOCKEE_EFFECT_TYPE:int = 18;
-      
-      public static const RISING_FURY_EFFECT_TYPE:int = 19;
        
       
       public var effectType_:uint;
@@ -57,28 +51,31 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var color_:int;
       
-      public var duration_:Number;
+      public var duration_:int;
       
-      public function ShowEffect(_arg1:uint, _arg2:Function)
+      public var objectType:int;
+      
+      public function ShowEffect(param1:uint, param2:Function)
       {
          this.pos1_ = new WorldPosData();
          this.pos2_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.effectType_ = _arg1.readUnsignedByte();
-         this.targetObjectId_ = _arg1.readInt();
-         this.pos1_.parseFromInput(_arg1);
-         this.pos2_.parseFromInput(_arg1);
-         this.color_ = _arg1.readInt();
-         this.duration_ = _arg1.readFloat();
+         this.effectType_ = param1.readUnsignedByte();
+         this.targetObjectId_ = param1.readInt();
+         this.pos1_.parseFromInput(param1);
+         this.pos2_.parseFromInput(param1);
+         this.color_ = param1.readInt();
+         this.duration_ = param1.readInt();
+         this.objectType = param1.readUnsignedShort();
       }
       
       override public function toString() : String
       {
-         return formatToString("SHOW_EFFECT","effectType_","targetObjectId_","pos1_","pos2_","color_","duration_");
+         return formatToString("SHOW_EFFECT","effectType_","targetObjectId_","pos1_","pos2_","color_","duration_","objectType");
       }
    }
 }

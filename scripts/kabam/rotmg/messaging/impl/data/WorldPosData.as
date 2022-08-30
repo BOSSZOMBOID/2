@@ -22,16 +22,16 @@ package kabam.rotmg.messaging.impl.data
          return new Point(this.x_,this.y_);
       }
       
-      public function parseFromInput(_arg1:IDataInput) : void
+      public function parseFromInput(param1:IDataInput) : void
       {
-         this.x_ = _arg1.readFloat();
-         this.y_ = _arg1.readFloat();
+         this.x_ = param1.readFloat();
+         this.y_ = param1.readFloat();
       }
       
-      public function writeToOutput(_arg1:IDataOutput) : void
+      public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeFloat(this.x_);
-         _arg1.writeFloat(this.y_);
+         param1.writeFloat(this.x_);
+         param1.writeFloat(this.y_);
       }
       
       public function toString() : String

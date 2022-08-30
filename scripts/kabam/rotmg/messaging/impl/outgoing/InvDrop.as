@@ -9,15 +9,15 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var slotObject_:SlotObjectData;
       
-      public function InvDrop(_arg1:uint, _arg2:Function)
+      public function InvDrop(param1:uint, param2:Function)
       {
          this.slotObject_ = new SlotObjectData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         this.slotObject_.writeToOutput(_arg1);
+         this.slotObject_.writeToOutput(param1);
       }
       
       override public function toString() : String

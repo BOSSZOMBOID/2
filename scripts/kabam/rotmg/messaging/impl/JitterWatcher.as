@@ -1,19 +1,16 @@
 package kabam.rotmg.messaging.impl
 {
+   import com.company.ui.SimpleText;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.filters.DropShadowFilter;
    import flash.utils.getTimer;
-   import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-   import kabam.rotmg.text.view.stringBuilder.LineBuilder;
    
    public class JitterWatcher extends Sprite
    {
-      
-      private static const lineBuilder:LineBuilder = new LineBuilder();
        
       
-      private var text_:TextFieldDisplayConcrete = null;
+      private var text_:SimpleText = null;
       
       private var lastRecord_:int = -1;
       
@@ -25,63 +22,69 @@ package kabam.rotmg.messaging.impl
       {
          this.ticks_ = new Vector.<int>();
          super();
-         this.text_ = new TextFieldDisplayConcrete().setSize(14).setColor(16777215);
-         this.text_.setAutoSize("left");
+         this.text_ = new SimpleText(14,16777215,false,0,0);
          this.text_.filters = [new DropShadowFilter(0,0,0)];
-         addChild(this.text_);
-         addEventListener("addedToStage",this.onAddedToStage);
-         addEventListener("removedFromStage",this.onRemovedFromStage);
+         this.addChild(this.text_);
+         this.addEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
+         this.addEventListener(Event.REMOVED_FROM_STAGE,this.onRemovedFromStage);
+      }
+      
+      public function get getNetJitter() : int
+      {
+         return int(this.jitter());
       }
       
       public function record() : void
       {
-         var fdx:int = 0;
-         var currentTime:int = getTimer();
+         var _loc1_:int = 0;
+         var _loc2_:int = getTimer();
          if(this.lastRecord_ == -1)
          {
-            this.lastRecord_ = currentTime;
+            this.lastRecord_ = _loc2_;
             return;
          }
-         var dx:int = currentTime - this.lastRecord_;
-         this.ticks_.push(dx);
-         this.sum_ += dx;
+         var _loc3_:int = _loc2_ - this.lastRecord_;
+         this.ticks_.push(_loc3_);
+         this.sum_ += _loc3_;
          if(this.ticks_.length > 50)
          {
-            fdx = this.ticks_.shift();
-            this.sum_ -= fdx;
+            _loc1_ = this.ticks_.shift();
+            this.sum_ -= _loc1_;
          }
-         this.lastRecord_ = currentTime;
-      }
-      
-      private function onAddedToStage(_arg1:Event) : void
-      {
-         stage.addEventListener("enterFrame",this.onEnterFrame);
-      }
-      
-      private function onRemovedFromStage(_arg1:Event) : void
-      {
-         stage.removeEventListener("enterFrame",this.onEnterFrame);
-      }
-      
-      private function onEnterFrame(_arg1:Event) : void
-      {
-         this.text_.setStringBuilder(lineBuilder.setParams("JitterWatcher.desc",{"jitter":this.jitter()}));
+         this.lastRecord_ = _loc2_;
       }
       
       private function jitter() : Number
       {
-         var numSamples:int = this.ticks_.length;
-         if(numSamples == 0)
+         var _loc1_:int = 0;
+         var _loc2_:int = this.ticks_.length;
+         if(_loc2_ == 0)
          {
             return 0;
          }
-         var avg:Number = this.sum_ / numSamples;
-         var sqrSum:* = 0;
-         for each(var dx in this.ticks_)
+         var _loc3_:Number = this.sum_ / _loc2_;
+         var _loc4_:Number = 0;
+         for each(_loc1_ in this.ticks_)
          {
-            sqrSum += (dx - avg) * (dx - avg);
+            _loc4_ += (_loc1_ - _loc3_) * (_loc1_ - _loc3_);
          }
-         return int(Math.sqrt(sqrSum / numSamples) * 10) / 10;
+         return int(Math.sqrt(_loc4_ / _loc2_) * 10) / 10;
+      }
+      
+      private function onAddedToStage(param1:Event) : void
+      {
+         this.stage.addEventListener(Event.ENTER_FRAME,this.onEnterFrame);
+      }
+      
+      private function onRemovedFromStage(param1:Event) : void
+      {
+         this.stage.removeEventListener(Event.ENTER_FRAME,this.onEnterFrame);
+      }
+      
+      private function onEnterFrame(param1:Event) : void
+      {
+         this.text_.text = "net jitter: " + int(this.jitter());
+         this.text_.useTextDimensions();
       }
    }
 }

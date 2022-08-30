@@ -19,23 +19,20 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var damage_:int;
       
-      public var itemData:String;
-      
-      public function ServerPlayerShoot(_arg1:uint, _arg2:Function)
+      public function ServerPlayerShoot(param1:uint, param2:Function)
       {
          this.startingPos_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.bulletId_ = _arg1.readInt();
-         this.ownerId_ = _arg1.readInt();
-         this.containerType_ = _arg1.readInt();
-         this.startingPos_.parseFromInput(_arg1);
-         this.angle_ = _arg1.readFloat();
-         this.damage_ = _arg1.readShort();
-         this.itemData = _arg1.readUTF();
+         this.bulletId_ = param1.readUnsignedByte();
+         this.ownerId_ = param1.readInt();
+         this.containerType_ = param1.readShort();
+         this.startingPos_.parseFromInput(param1);
+         this.angle_ = param1.readFloat();
+         this.damage_ = param1.readShort();
       }
       
       override public function toString() : String

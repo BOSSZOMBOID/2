@@ -6,7 +6,7 @@ package kabam.rotmg.messaging.impl.data
    {
        
       
-      public var item_:String;
+      public var item_:int;
       
       public var slotType_:int;
       
@@ -14,17 +14,20 @@ package kabam.rotmg.messaging.impl.data
       
       public var included_:Boolean;
       
+      public var itemData_:String;
+      
       public function TradeItem()
       {
          super();
       }
       
-      public function parseFromInput(_arg1:IDataInput) : void
+      public function parseFromInput(param1:IDataInput) : void
       {
-         this.item_ = _arg1.readUTF();
-         this.slotType_ = _arg1.readInt();
-         this.tradeable_ = _arg1.readBoolean();
-         this.included_ = _arg1.readBoolean();
+         this.item_ = param1.readInt();
+         this.slotType_ = param1.readInt();
+         this.tradeable_ = param1.readBoolean();
+         this.included_ = param1.readBoolean();
+         this.itemData_ = param1.readUTF();
       }
       
       public function toString() : String

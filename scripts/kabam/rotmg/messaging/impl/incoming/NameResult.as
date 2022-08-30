@@ -10,15 +10,15 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var errorText_:String;
       
-      public function NameResult(_arg1:uint, _arg2:Function)
+      public function NameResult(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.success_ = _arg1.readBoolean();
-         this.errorText_ = _arg1.readUTF();
+         this.success_ = param1.readBoolean();
+         this.errorText_ = param1.readUTF();
       }
       
       override public function toString() : String

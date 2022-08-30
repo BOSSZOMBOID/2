@@ -12,15 +12,15 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var type_:int;
       
-      public function PotionStorageInteraction(action:uint, func:Function)
+      public function PotionStorageInteraction(param1:uint, param2:Function)
       {
-         super(action,func);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(iDataOutput:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         iDataOutput.writeByte(this.type_);
-         iDataOutput.writeByte(this.action_);
+         param1.writeByte(this.type_);
+         param1.writeByte(this.action_);
       }
       
       override public function toString() : String

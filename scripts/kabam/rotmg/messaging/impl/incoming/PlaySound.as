@@ -10,15 +10,15 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var soundId_:int;
       
-      public function PlaySound(_arg1:uint, _arg2:Function)
+      public function PlaySound(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.ownerId_ = _arg1.readInt();
-         this.soundId_ = _arg1.readUnsignedByte();
+         this.ownerId_ = param1.readInt();
+         this.soundId_ = param1.readUnsignedByte();
       }
       
       override public function toString() : String

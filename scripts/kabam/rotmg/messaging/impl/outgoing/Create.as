@@ -10,15 +10,15 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var skinType:int;
       
-      public function Create(_arg1:uint, _arg2:Function)
+      public function Create(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeShort(this.classType);
-         _arg1.writeShort(this.skinType);
+         param1.writeShort(this.classType);
+         param1.writeShort(this.skinType);
       }
       
       override public function toString() : String

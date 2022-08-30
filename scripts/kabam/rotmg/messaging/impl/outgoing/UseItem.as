@@ -16,24 +16,27 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var useType_:int;
       
-      public function UseItem(_arg1:uint, _arg2:Function)
+      public var sellMaxed_:int;
+      
+      public function UseItem(param1:uint, param2:Function)
       {
          this.slotObject_ = new SlotObjectData();
          this.itemUsePos_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.time_);
-         this.slotObject_.writeToOutput(_arg1);
-         this.itemUsePos_.writeToOutput(_arg1);
-         _arg1.writeByte(this.useType_);
+         param1.writeInt(this.time_);
+         this.slotObject_.writeToOutput(param1);
+         this.itemUsePos_.writeToOutput(param1);
+         param1.writeByte(this.useType_);
+         param1.writeByte(this.sellMaxed_);
       }
       
       override public function toString() : String
       {
-         return formatToString("USEITEM","slotObject_","itemUsePos_","useType_");
+         return formatToString("USEITEM","slotObject_","itemUsePos_","useType_","sellMaxed_");
       }
    }
 }

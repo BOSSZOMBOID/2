@@ -10,31 +10,31 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var yourOffer_:Vector.<Boolean>;
       
-      public function TradeAccepted(_arg1:uint, _arg2:Function)
+      public function TradeAccepted(param1:uint, param2:Function)
       {
          this.myOffer_ = new Vector.<Boolean>();
          this.yourOffer_ = new Vector.<Boolean>();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         var _local2:int = 0;
+         var _loc2_:int = 0;
          this.myOffer_.length = 0;
-         var _local3:int = _arg1.readShort();
-         _local2 = 0;
-         while(_local2 < _local3)
+         var _loc3_:int = param1.readShort();
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this.myOffer_.push(_arg1.readBoolean());
-            _local2++;
+            this.myOffer_.push(param1.readBoolean());
+            _loc2_++;
          }
          this.yourOffer_.length = 0;
-         _local3 = _arg1.readShort();
-         _local2 = 0;
-         while(_local2 < _local3)
+         _loc3_ = param1.readShort();
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this.yourOffer_.push(_arg1.readBoolean());
-            _local2++;
+            this.yourOffer_.push(param1.readBoolean());
+            _loc2_++;
          }
       }
       

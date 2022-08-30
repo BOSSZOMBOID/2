@@ -12,8 +12,6 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var numStars_:int;
       
-      public var admin_:int;
-      
       public var bubbleTime_:uint;
       
       public var recipient_:String;
@@ -26,29 +24,25 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var textColor_:int;
       
-      public var starIconType:int;
-      
-      public function Text(_arg1:uint, _arg2:Function)
+      public function Text(param1:uint, param2:Function)
       {
          this.name_ = new String();
          this.text_ = new String();
          this.cleanText_ = new String();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.name_ = _arg1.readUTF();
-         this.objectId_ = _arg1.readInt();
-         this.numStars_ = _arg1.readInt();
-         this.admin_ = _arg1.readInt();
-         this.bubbleTime_ = _arg1.readUnsignedByte();
-         this.recipient_ = _arg1.readUTF();
-         this.text_ = _arg1.readUTF();
-         this.cleanText_ = _arg1.readUTF();
-         this.nameColor_ = _arg1.readInt();
-         this.textColor_ = _arg1.readInt();
-         this.starIconType = _arg1.readInt();
+         this.name_ = param1.readUTF();
+         this.objectId_ = param1.readInt();
+         this.numStars_ = param1.readInt();
+         this.bubbleTime_ = param1.readUnsignedByte();
+         this.recipient_ = param1.readUTF();
+         this.text_ = param1.readUTF();
+         this.cleanText_ = param1.readUTF();
+         this.nameColor_ = param1.readInt();
+         this.textColor_ = param1.readInt();
       }
       
       override public function toString() : String

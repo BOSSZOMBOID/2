@@ -14,17 +14,17 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var angle_:Number;
       
-      public function AllyShoot(_arg1:uint, _arg2:Function)
+      public function AllyShoot(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.bulletId_ = _arg1.readInt();
-         this.ownerId_ = _arg1.readInt();
-         this.containerType_ = _arg1.readShort();
-         this.angle_ = _arg1.readFloat();
+         this.bulletId_ = param1.readUnsignedByte();
+         this.ownerId_ = param1.readInt();
+         this.containerType_ = param1.readShort();
+         this.angle_ = param1.readFloat();
       }
       
       override public function toString() : String

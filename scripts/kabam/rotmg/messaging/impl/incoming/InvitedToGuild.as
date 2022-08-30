@@ -10,15 +10,15 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var guildName_:String;
       
-      public function InvitedToGuild(_arg1:uint, _arg2:Function)
+      public function InvitedToGuild(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.name_ = _arg1.readUTF();
-         this.guildName_ = _arg1.readUTF();
+         this.name_ = param1.readUTF();
+         this.guildName_ = param1.readUTF();
       }
       
       override public function toString() : String

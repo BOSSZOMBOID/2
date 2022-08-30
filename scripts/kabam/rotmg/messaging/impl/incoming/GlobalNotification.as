@@ -4,10 +4,6 @@ package kabam.rotmg.messaging.impl.incoming
    
    public class GlobalNotification extends IncomingMessage
    {
-      
-      public static const ADD_ARENA:int = 1;
-      
-      public static const DELETE_ARENA:int = 2;
        
       
       public var type:int;

@@ -8,14 +8,14 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var time_:int;
       
-      public function GotoAck(_arg1:uint, _arg2:Function)
+      public function GotoAck(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.time_);
+         param1.writeInt(this.time_);
       }
       
       override public function toString() : String

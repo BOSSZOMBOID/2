@@ -11,16 +11,16 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var pos_:WorldPosData;
       
-      public function Goto(_arg1:uint, _arg2:Function)
+      public function Goto(param1:uint, param2:Function)
       {
          this.pos_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.objectId_ = _arg1.readInt();
-         this.pos_.parseFromInput(_arg1);
+         this.objectId_ = param1.readInt();
+         this.pos_.parseFromInput(param1);
       }
       
       override public function toString() : String

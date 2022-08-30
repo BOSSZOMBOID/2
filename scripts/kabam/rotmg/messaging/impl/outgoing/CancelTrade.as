@@ -6,14 +6,12 @@ package kabam.rotmg.messaging.impl.outgoing
    {
        
       
-      public var objectId_:int;
-      
-      public function CancelTrade(_arg1:uint, _arg2:Function)
+      public function CancelTrade(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
       }
       

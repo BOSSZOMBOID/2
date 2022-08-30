@@ -14,15 +14,15 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var description_:String;
       
-      public function TradeDone(_arg1:uint, _arg2:Function)
+      public function TradeDone(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.code_ = _arg1.readInt();
-         this.description_ = _arg1.readUTF();
+         this.code_ = param1.readInt();
+         this.description_ = param1.readUTF();
       }
       
       override public function toString() : String

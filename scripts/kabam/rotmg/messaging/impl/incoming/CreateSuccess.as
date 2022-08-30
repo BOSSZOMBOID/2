@@ -10,15 +10,15 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var charId_:int;
       
-      public function CreateSuccess(_arg1:uint, _arg2:Function)
+      public function CreateSuccess(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.objectId_ = _arg1.readInt();
-         this.charId_ = _arg1.readInt();
+         this.objectId_ = param1.readInt();
+         this.charId_ = param1.readInt();
       }
       
       override public function toString() : String

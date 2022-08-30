@@ -21,41 +21,41 @@ package kabam.rotmg.messaging.impl.data
          super();
       }
       
-      public function parseFromInput(_arg1:IDataInput) : void
+      public function parseFromInput(param1:IDataInput) : void
       {
-         var _local3:* = 0;
-         this.objectId_ = _arg1.readInt();
-         this.pos_.parseFromInput(_arg1);
-         var _local2:int = _arg1.readShort();
-         _local3 = _local2;
-         while(_local3 < this.stats_.length)
+         var _loc2_:int = 0;
+         this.objectId_ = param1.readInt();
+         this.pos_.parseFromInput(param1);
+         var _loc3_:int = param1.readShort();
+         _loc2_ = _loc3_;
+         while(_loc2_ < this.stats_.length)
          {
-            FreeList.deleteObject(this.stats_[_local3]);
-            _local3++;
+            FreeList.deleteObject(this.stats_[_loc2_]);
+            _loc2_++;
          }
-         this.stats_.length = Math.min(_local2,this.stats_.length);
-         while(this.stats_.length < _local2)
+         this.stats_.length = Math.min(_loc3_,this.stats_.length);
+         while(this.stats_.length < _loc3_)
          {
             this.stats_.push(FreeList.newObject(StatData) as StatData);
          }
-         _local3 = 0;
-         while(_local3 < _local2)
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this.stats_[_local3].parseFromInput(_arg1);
-            _local3++;
+            this.stats_[_loc2_].parseFromInput(param1);
+            _loc2_++;
          }
       }
       
-      public function writeToOutput(_arg1:IDataOutput) : void
+      public function writeToOutput(param1:IDataOutput) : void
       {
-         var _local2:int = 0;
-         _arg1.writeInt(this.objectId_);
-         this.pos_.writeToOutput(_arg1);
-         _arg1.writeShort(this.stats_.length);
-         while(_local2 < this.stats_.length)
+         param1.writeInt(this.objectId_);
+         this.pos_.writeToOutput(param1);
+         param1.writeShort(this.stats_.length);
+         var _loc2_:int = 0;
+         while(_loc2_ < this.stats_.length)
          {
-            this.stats_[_local2].writeToOutput(_arg1);
-            _local2++;
+            this.stats_[_loc2_].writeToOutput(param1);
+            _loc2_++;
          }
       }
       

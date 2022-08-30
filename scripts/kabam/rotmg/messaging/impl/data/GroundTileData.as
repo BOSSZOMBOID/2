@@ -17,11 +17,11 @@ package kabam.rotmg.messaging.impl.data
          super();
       }
       
-      public function parseFromInput(_arg1:IDataInput) : void
+      public function parseFromInput(param1:IDataInput) : void
       {
-         this.x_ = _arg1.readShort();
-         this.y_ = _arg1.readShort();
-         this.type_ = _arg1.readUnsignedShort();
+         this.x_ = param1.readShort();
+         this.y_ = param1.readShort();
+         this.type_ = param1.readUnsignedShort();
       }
       
       public function toString() : String

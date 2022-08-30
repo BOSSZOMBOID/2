@@ -10,19 +10,19 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var bitmapData_:BitmapData = null;
       
-      public function Pic(_arg1:uint, _arg2:Function)
+      public function Pic(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         var _local2:int = _arg1.readInt();
-         var _local3:int = _arg1.readInt();
-         var _local4:ByteArray = new ByteArray();
-         _arg1.readBytes(_local4,0,_local2 * _local3 * 4);
-         this.bitmapData_ = new BitmapDataSpy(_local2,_local3);
-         this.bitmapData_.setPixels(this.bitmapData_.rect,_local4);
+         var _loc2_:int = param1.readInt();
+         var _loc3_:int = param1.readInt();
+         var _loc4_:ByteArray = new ByteArray();
+         param1.readBytes(_loc4_,0,_loc2_ * _loc3_ * 4);
+         this.bitmapData_ = new BitmapData(_loc2_,_loc3_);
+         this.bitmapData_.setPixels(this.bitmapData_.rect,_loc4_);
       }
       
       override public function toString() : String

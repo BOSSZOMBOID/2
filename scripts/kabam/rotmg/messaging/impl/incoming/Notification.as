@@ -8,25 +8,28 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var objectId_:int;
       
-      public var message:String;
+      public var text_:String;
       
       public var color_:int;
       
-      public function Notification(_arg1:uint, _arg2:Function)
+      public var playerId_:int;
+      
+      public function Notification(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.objectId_ = _arg1.readInt();
-         this.message = _arg1.readUTF();
-         this.color_ = _arg1.readInt();
+         this.objectId_ = param1.readInt();
+         this.text_ = param1.readUTF();
+         this.color_ = param1.readInt();
+         this.playerId_ = param1.readInt();
       }
       
       override public function toString() : String
       {
-         return formatToString("NOTIFICATION","objectId_","message","color_");
+         return formatToString("NOTIFICATION","objectId_","text_","color_","playerId_");
       }
    }
 }

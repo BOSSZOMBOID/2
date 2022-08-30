@@ -7,12 +7,12 @@ package kabam.rotmg.messaging.impl.incoming
    {
        
       
-      public function IncomingMessage(_arg1:uint, _arg2:Function)
+      public function IncomingMessage(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public final function writeToOutput(_arg1:IDataOutput) : void
+      override public final function writeToOutput(param1:IDataOutput) : void
       {
          throw new Error("Client should not send " + id + " messages");
       }

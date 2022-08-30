@@ -8,28 +8,19 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var objectId_:int;
       
-      public var quantity_:int;
-      
-      public var marketId_:uint;
-      
-      public var type_:int;
-      
-      public function Buy(_arg1:uint, _arg2:Function)
+      public function Buy(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.objectId_);
-         _arg1.writeInt(this.quantity_);
-         _arg1.writeUnsignedInt(marketId_);
-         _arg1.writeInt(this.type_);
+         param1.writeInt(this.objectId_);
       }
       
       override public function toString() : String
       {
-         return formatToString("BUY","objectId_","quantity_","marketId_","type_");
+         return formatToString("BUY","objectId_");
       }
    }
 }

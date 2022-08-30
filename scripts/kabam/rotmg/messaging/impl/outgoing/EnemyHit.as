@@ -14,17 +14,20 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var kill_:Boolean;
       
-      public function EnemyHit(_arg1:uint, _arg2:Function)
+      public var itemType_:int;
+      
+      public function EnemyHit(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.time_);
-         _arg1.writeInt(this.bulletId_);
-         _arg1.writeInt(this.targetId_);
-         _arg1.writeBoolean(this.kill_);
+         param1.writeInt(this.time_);
+         param1.writeByte(this.bulletId_);
+         param1.writeInt(this.targetId_);
+         param1.writeBoolean(this.kill_);
+         param1.writeShort(this.itemType_);
       }
       
       override public function toString() : String

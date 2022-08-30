@@ -17,19 +17,19 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var angle_:Number;
       
-      public function PlayerShoot(_arg1:uint, _arg2:Function)
+      public function PlayerShoot(param1:uint, param2:Function)
       {
          this.startingPos_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.time_);
-         _arg1.writeInt(this.bulletId_);
-         _arg1.writeShort(this.containerType_);
-         this.startingPos_.writeToOutput(_arg1);
-         _arg1.writeFloat(this.angle_);
+         param1.writeInt(this.time_);
+         param1.writeByte(this.bulletId_);
+         param1.writeShort(this.containerType_);
+         this.startingPos_.writeToOutput(param1);
+         param1.writeFloat(this.angle_);
       }
       
       override public function toString() : String

@@ -23,24 +23,24 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var angleInc_:Number;
       
-      public function EnemyShoot(_arg1:uint, _arg2:Function)
+      public function EnemyShoot(param1:uint, param2:Function)
       {
          this.startingPos_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.bulletId_ = _arg1.readInt();
-         this.ownerId_ = _arg1.readInt();
-         this.bulletType_ = _arg1.readUnsignedByte();
-         this.startingPos_.parseFromInput(_arg1);
-         this.angle_ = _arg1.readFloat();
-         this.damage_ = _arg1.readShort();
-         if(_arg1.bytesAvailable > 0)
+         this.bulletId_ = param1.readUnsignedByte();
+         this.ownerId_ = param1.readInt();
+         this.bulletType_ = param1.readUnsignedByte();
+         this.startingPos_.parseFromInput(param1);
+         this.angle_ = param1.readFloat();
+         this.damage_ = param1.readShort();
+         if(param1.bytesAvailable > 0)
          {
-            this.numShots_ = _arg1.readUnsignedByte();
-            this.angleInc_ = _arg1.readFloat();
+            this.numShots_ = param1.readUnsignedByte();
+            this.angleInc_ = param1.readFloat();
          }
          else
          {

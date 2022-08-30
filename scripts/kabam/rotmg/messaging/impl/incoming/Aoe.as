@@ -19,20 +19,20 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var origType_:int;
       
-      public function Aoe(_arg1:uint, _arg2:Function)
+      public function Aoe(param1:uint, param2:Function)
       {
          this.pos_ = new WorldPosData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.pos_.parseFromInput(_arg1);
-         this.radius_ = _arg1.readFloat();
-         this.damage_ = _arg1.readUnsignedInt();
-         this.effect_ = _arg1.readUnsignedByte();
-         this.duration_ = _arg1.readFloat();
-         this.origType_ = _arg1.readUnsignedShort();
+         this.pos_.parseFromInput(param1);
+         this.radius_ = param1.readFloat();
+         this.damage_ = param1.readUnsignedShort();
+         this.effect_ = param1.readUnsignedByte();
+         this.duration_ = param1.readFloat();
+         this.origType_ = param1.readUnsignedShort();
       }
       
       override public function toString() : String

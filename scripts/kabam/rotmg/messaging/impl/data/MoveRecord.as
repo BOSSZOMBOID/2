@@ -12,19 +12,19 @@ package kabam.rotmg.messaging.impl.data
       
       public var y_:Number;
       
-      public function MoveRecord(_arg1:int, _arg2:Number, _arg3:Number)
+      public function MoveRecord(param1:int, param2:Number, param3:Number)
       {
          super();
-         this.time_ = _arg1;
-         this.x_ = _arg2;
-         this.y_ = _arg3;
+         this.time_ = param1;
+         this.x_ = param2;
+         this.y_ = param3;
       }
       
-      public function writeToOutput(_arg1:IDataOutput) : void
+      public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.time_);
-         _arg1.writeFloat(this.x_);
-         _arg1.writeFloat(this.y_);
+         param1.writeInt(this.time_);
+         param1.writeFloat(this.x_);
+         param1.writeFloat(this.y_);
       }
       
       public function toString() : String

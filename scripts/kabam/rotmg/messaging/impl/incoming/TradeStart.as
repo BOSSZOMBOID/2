@@ -14,52 +14,52 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var yourItems_:Vector.<TradeItem>;
       
-      public function TradeStart(_arg1:uint, _arg2:Function)
+      public function TradeStart(param1:uint, param2:Function)
       {
          this.myItems_ = new Vector.<TradeItem>();
          this.yourItems_ = new Vector.<TradeItem>();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         var _local2:* = 0;
-         var _local3:int = _arg1.readShort();
-         _local2 = _local3;
-         while(_local2 < this.myItems_.length)
+         var _loc2_:int = 0;
+         var _loc3_:int = param1.readShort();
+         _loc2_ = _loc3_;
+         while(_loc2_ < this.myItems_.length)
          {
-            FreeList.deleteObject(this.myItems_[_local2]);
-            _local2++;
+            FreeList.deleteObject(this.myItems_[_loc2_]);
+            _loc2_++;
          }
-         this.myItems_.length = Math.min(_local3,this.myItems_.length);
-         while(this.myItems_.length < _local3)
+         this.myItems_.length = Math.min(_loc3_,this.myItems_.length);
+         while(this.myItems_.length < _loc3_)
          {
             this.myItems_.push(FreeList.newObject(TradeItem) as TradeItem);
          }
-         _local2 = 0;
-         while(_local2 < _local3)
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this.myItems_[_local2].parseFromInput(_arg1);
-            _local2++;
+            this.myItems_[_loc2_].parseFromInput(param1);
+            _loc2_++;
          }
-         this.yourName_ = _arg1.readUTF();
-         _local3 = _arg1.readShort();
-         _local2 = _local3;
-         while(_local2 < this.yourItems_.length)
+         this.yourName_ = param1.readUTF();
+         _loc3_ = param1.readShort();
+         _loc2_ = _loc3_;
+         while(_loc2_ < this.yourItems_.length)
          {
-            FreeList.deleteObject(this.yourItems_[_local2]);
-            _local2++;
+            FreeList.deleteObject(this.yourItems_[_loc2_]);
+            _loc2_++;
          }
-         this.yourItems_.length = Math.min(_local3,this.yourItems_.length);
-         while(this.yourItems_.length < _local3)
+         this.yourItems_.length = Math.min(_loc3_,this.yourItems_.length);
+         while(this.yourItems_.length < _loc3_)
          {
             this.yourItems_.push(FreeList.newObject(TradeItem) as TradeItem);
          }
-         _local2 = 0;
-         while(_local2 < _local3)
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this.yourItems_[_local2].parseFromInput(_arg1);
-            _local2++;
+            this.yourItems_[_loc2_].parseFromInput(param1);
+            _loc2_++;
          }
       }
       

@@ -16,10 +16,10 @@ package kabam.rotmg.messaging.impl.data
          super();
       }
       
-      public function parseFromInput(_arg1:IDataInput) : void
+      public function parseFromInput(param1:IDataInput) : void
       {
-         this.objectType_ = _arg1.readUnsignedShort();
-         this.status_.parseFromInput(_arg1);
+         this.objectType_ = param1.readUnsignedShort();
+         this.status_.parseFromInput(param1);
       }
       
       public function toString() : String

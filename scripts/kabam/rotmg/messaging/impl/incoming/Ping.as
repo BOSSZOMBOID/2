@@ -8,14 +8,14 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var serial_:int;
       
-      public function Ping(_arg1:uint, _arg2:Function)
+      public function Ping(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.serial_ = _arg1.readInt();
+         this.serial_ = param1.readInt();
       }
       
       override public function toString() : String

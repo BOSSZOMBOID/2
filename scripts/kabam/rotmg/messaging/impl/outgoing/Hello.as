@@ -7,45 +7,46 @@ package kabam.rotmg.messaging.impl.outgoing
    {
        
       
-      public var buildVersion:String;
+      public var buildVersion_:String;
       
-      public var gameId:int = 0;
+      public var gameId_:int = 0;
       
-      public var guid:String;
+      public var guid_:String;
       
-      public var loginToken:String;
+      public var password_:String;
       
-      public var keyTime:int = 0;
+      public var keyTime_:int = 0;
       
-      public var key:ByteArray;
+      public var key_:ByteArray;
       
-      public var mapJSON:String;
+      public var mapJSON_:String;
       
-      public var cliBytes:int = 0;
-      
-      public function Hello(id:uint, callback:Function)
+      public function Hello(param1:uint, param2:Function)
       {
-         this.key = new ByteArray();
-         super(id,callback);
+         this.buildVersion_ = "";
+         this.guid_ = "";
+         this.password_ = "";
+         this.key_ = new ByteArray();
+         this.mapJSON_ = "";
+         super(param1,param2,true);
       }
       
-      override public function writeToOutput(data:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         data.writeUTF(this.buildVersion);
-         data.writeInt(this.gameId);
-         data.writeUTF(this.guid);
-         data.writeUTF(this.loginToken);
-         data.writeInt(this.keyTime);
-         data.writeShort(this.key.length);
-         data.writeBytes(this.key);
-         data.writeInt(this.mapJSON.length);
-         data.writeUTFBytes(this.mapJSON);
-         data.writeInt(this.cliBytes);
+         param1.writeUTF(this.buildVersion_);
+         param1.writeInt(this.gameId_);
+         param1.writeUTF(this.guid_);
+         param1.writeUTF(this.password_);
+         param1.writeInt(this.keyTime_);
+         param1.writeShort(this.key_.length);
+         param1.writeBytes(this.key_);
+         param1.writeInt(this.mapJSON_.length);
+         param1.writeUTFBytes(this.mapJSON_);
       }
       
       override public function toString() : String
       {
-         return formatToString("HELLO","buildVersion","gameId","guid","loginToken","keyTime","key","mapJSON","cliBytes");
+         return formatToString("HELLO","buildVersion_","gameId_","guid_","password_");
       }
    }
 }

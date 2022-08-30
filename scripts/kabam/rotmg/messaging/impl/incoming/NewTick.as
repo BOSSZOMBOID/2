@@ -14,34 +14,34 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var statuses_:Vector.<ObjectStatusData>;
       
-      public function NewTick(_arg1:uint, _arg2:Function)
+      public function NewTick(param1:uint, param2:Function)
       {
          this.statuses_ = new Vector.<ObjectStatusData>();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         var _local3:* = 0;
-         this.tickId_ = _arg1.readInt();
-         this.tickTime_ = _arg1.readInt();
-         var _local2:int = _arg1.readShort();
-         _local3 = _local2;
-         while(_local3 < this.statuses_.length)
+         var _loc2_:int = 0;
+         this.tickId_ = param1.readInt();
+         this.tickTime_ = param1.readInt();
+         var _loc3_:int = param1.readShort();
+         _loc2_ = _loc3_;
+         while(_loc2_ < this.statuses_.length)
          {
-            FreeList.deleteObject(this.statuses_[_local3]);
-            _local3++;
+            FreeList.deleteObject(this.statuses_[_loc2_]);
+            _loc2_++;
          }
-         this.statuses_.length = Math.min(_local2,this.statuses_.length);
-         while(this.statuses_.length < _local2)
+         this.statuses_.length = Math.min(_loc3_,this.statuses_.length);
+         while(this.statuses_.length < _loc3_)
          {
             this.statuses_.push(FreeList.newObject(ObjectStatusData) as ObjectStatusData);
          }
-         _local3 = 0;
-         while(_local3 < _local2)
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this.statuses_[_local3].parseFromInput(_arg1);
-            _local3++;
+            this.statuses_[_loc2_].parseFromInput(param1);
+            _loc2_++;
          }
       }
       

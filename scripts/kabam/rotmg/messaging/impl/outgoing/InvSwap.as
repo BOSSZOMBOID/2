@@ -16,20 +16,20 @@ package kabam.rotmg.messaging.impl.outgoing
       
       public var slotObject2_:SlotObjectData;
       
-      public function InvSwap(_arg1:uint, _arg2:Function)
+      public function InvSwap(param1:uint, param2:Function)
       {
          this.position_ = new WorldPosData();
          this.slotObject1_ = new SlotObjectData();
          this.slotObject2_ = new SlotObjectData();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function writeToOutput(_arg1:IDataOutput) : void
+      override public function writeToOutput(param1:IDataOutput) : void
       {
-         _arg1.writeInt(this.time_);
-         this.position_.writeToOutput(_arg1);
-         this.slotObject1_.writeToOutput(_arg1);
-         this.slotObject2_.writeToOutput(_arg1);
+         param1.writeInt(this.time_);
+         this.position_.writeToOutput(param1);
+         this.slotObject1_.writeToOutput(param1);
+         this.slotObject2_.writeToOutput(param1);
       }
       
       override public function toString() : String

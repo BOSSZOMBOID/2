@@ -8,14 +8,14 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var music:String;
       
-      public function SwitchMusic(_arg1:uint, _arg2:Function)
+      public function SwitchMusic(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.music = _arg1.readUTF();
+         this.music = param1.readUTF();
       }
       
       override public function toString() : String

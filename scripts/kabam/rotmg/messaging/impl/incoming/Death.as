@@ -7,23 +7,17 @@ package kabam.rotmg.messaging.impl.incoming
    {
        
       
-      public var accountId_:String;
+      public var accountId_:int;
       
       public var charId_:int;
       
       public var killedBy_:String;
       
-      public var zombieId:int;
-      
-      public var zombieType:int;
-      
-      public var isZombie:Boolean;
-      
       public var background:BitmapData;
       
-      public function Death(_arg1:uint, _arg2:Function)
+      public function Death(param1:uint, param2:Function)
       {
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
       public function disposeBackground() : void
@@ -32,14 +26,11 @@ package kabam.rotmg.messaging.impl.incoming
          this.background = null;
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         this.accountId_ = _arg1.readUTF();
-         this.charId_ = _arg1.readInt();
-         this.killedBy_ = _arg1.readUTF();
-         this.zombieType = _arg1.readInt();
-         this.zombieId = _arg1.readInt();
-         this.isZombie = this.zombieId != -1;
+         this.accountId_ = param1.readInt();
+         this.charId_ = param1.readInt();
+         this.killedBy_ = param1.readUTF();
       }
       
       override public function toString() : String

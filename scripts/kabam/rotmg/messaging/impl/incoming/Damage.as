@@ -18,27 +18,27 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var objectId_:int;
       
-      public function Damage(_arg1:uint, _arg2:Function)
+      public function Damage(param1:uint, param2:Function)
       {
          this.effects_ = new Vector.<uint>();
-         super(_arg1,_arg2);
+         super(param1,param2);
       }
       
-      override public function parseFromInput(_arg1:IDataInput) : void
+      override public function parseFromInput(param1:IDataInput) : void
       {
-         var _local3:int = 0;
-         this.targetId_ = _arg1.readInt();
+         this.targetId_ = param1.readInt();
          this.effects_.length = 0;
-         var _local2:int = _arg1.readUnsignedByte();
-         while(_local3 < _local2)
+         var _loc2_:int = param1.readUnsignedByte();
+         var _loc3_:uint = 0;
+         while(_loc3_ < _loc2_)
          {
-            this.effects_.push(_arg1.readUnsignedByte());
-            _local3++;
+            this.effects_.push(param1.readUnsignedByte());
+            _loc3_++;
          }
-         this.damageAmount_ = _arg1.readUnsignedInt();
-         this.kill_ = _arg1.readBoolean();
-         this.bulletId_ = _arg1.readUnsignedByte();
-         this.objectId_ = _arg1.readInt();
+         this.damageAmount_ = param1.readUnsignedShort();
+         this.kill_ = param1.readBoolean();
+         this.bulletId_ = param1.readUnsignedByte();
+         this.objectId_ = param1.readInt();
       }
       
       override public function toString() : String
